@@ -69,7 +69,6 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
               >
                 Contact
               </Link>
-              <div className="h-6 w-px bg-gray-300 mx-2"></div>
               <Link
                 to="/pathways"
                 className="px-5 py-2 bg-gradient-to-r from-[#002A5C] to-[#001d3f] text-white rounded-lg font-semibold hover:from-[#001d3f] hover:to-[#002A5C] hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm"
