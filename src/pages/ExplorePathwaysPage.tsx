@@ -210,7 +210,7 @@ const ExplorePathwaysPage: React.FC = () => {
         setCurrentMapIndex((prev) => (prev + 1) % pathwaysWithPositions.length);
         setIsTransitioning(false);
       }, 300);
-    }, 10000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [isAutoRotating, highlightedPathways.length, pathwaysWithPositions.length, isTransitioning]);
