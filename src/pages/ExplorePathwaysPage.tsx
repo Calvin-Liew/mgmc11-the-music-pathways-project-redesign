@@ -283,7 +283,7 @@ const ExplorePathwaysPage: React.FC = () => {
       .map(m => m.id);
   };
 
-  const generateBotResponse = (input: string, matchedPathways: string[]): string => {
+  const generateBotResponse = (_input: string, matchedPathways: string[]): string => {
     if (matchedPathways.length === 0) {
       return "That's interesting! Let me help you explore. Try telling me more about what you enjoy, or click one of the quick-start options below!";
     }
@@ -293,7 +293,7 @@ const ExplorePathwaysPage: React.FC = () => {
     if (pathwayNames.length === 1) {
       return `Based on what you've shared, you might be interested in **${pathwayNames[0]}**! This pathway focuses on ${pathwaysWithPositions.find(p => p.id === matchedPathways[0])?.description.toLowerCase()}. Click on it in the map to learn more!`;
     } else {
-      return `Based on what you've shared, you might be interested in:\n\n${pathwayNames.map((name, idx) => `→ **${name}**`).join('\n')}\n\nCheck out these pathways on the map! They're highlighted for you.`;
+      return `Based on what you've shared, you might be interested in:\n\n${pathwayNames.map((name) => `→ **${name}**`).join('\n')}\n\nCheck out these pathways on the map! They're highlighted for you.`;
     }
   };
 
@@ -570,7 +570,7 @@ const ExplorePathwaysPage: React.FC = () => {
 
                 {/* Connecting Lines */}
                 <g opacity="0.3">
-                  {pathwaysWithPositions.map((pathway, idx) => {
+                  {pathwaysWithPositions.map((pathway) => {
                     const centerX = 50;
                     const centerY = 50;
                     const isHighlighted = highlightedPathways.includes(pathway.id);
