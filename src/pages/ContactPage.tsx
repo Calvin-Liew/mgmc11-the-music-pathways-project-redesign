@@ -65,7 +65,7 @@ const ContactPage: React.FC = () => {
                     <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
                       Name <span className="text-[#D12A2A]">*</span>
                     </label>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
                         type="text"
                         id="firstName"
@@ -74,7 +74,7 @@ const ContactPage: React.FC = () => {
                         value={formData.firstName}
                         onChange={handleFormChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#002A5C] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#002A5C] focus:outline-none transition-colors text-sm sm:text-base"
                       />
                       <input
                         type="text"
@@ -84,7 +84,7 @@ const ContactPage: React.FC = () => {
                         value={formData.lastName}
                         onChange={handleFormChange}
                         required
-                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#002A5C] focus:outline-none transition-colors"
+                        className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-[#002A5C] focus:outline-none transition-colors text-sm sm:text-base"
                       />
                     </div>
                   </div>

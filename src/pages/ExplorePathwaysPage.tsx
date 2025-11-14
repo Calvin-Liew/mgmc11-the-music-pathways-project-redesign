@@ -451,20 +451,20 @@ const ExplorePathwaysPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F8FAFC] to-white">
       {/* Page Header */}
-      <div className="bg-gradient-to-r from-[#002A5C] to-[#001d3f] text-white py-12 md:py-16">
+      <div className="bg-gradient-to-r from-[#002A5C] to-[#001d3f] text-white py-8 sm:py-12 md:py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3">Explore Your Music Pathways</h1>
-          <p className="text-lg text-white/90 max-w-2xl">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">Explore Your Music Pathways</h1>
+          <p className="text-base sm:text-lg text-white/90 max-w-2xl">
             Discover personalized career pathways through conversation with Tempo, your music career guide, and explore an interactive map of opportunities.
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-6 lg:gap-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 md:py-12">
+        <div className="grid lg:grid-cols-[1.1fr_1fr] gap-4 sm:gap-6 lg:gap-8">
           {/* Left Column - Tabbed Interface */}
-          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col" style={{ height: '650px' }}>
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col h-[500px] lg:h-[650px]">
             {/* Tab Navigation */}
             <div className="flex border-b border-gray-200 bg-gray-50">
               <button
@@ -474,17 +474,18 @@ const ExplorePathwaysPage: React.FC = () => {
                     setIsAutoRotating(false); // Stop auto-rotation when switching tabs
                   }
                 }}
-                className={`flex-1 px-6 py-4 font-semibold text-sm transition-all ${
+                className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 font-semibold text-xs sm:text-sm transition-all ${
                   activeTab === 'chat'
                     ? 'bg-white text-[#002A5C] border-b-2 border-[#002A5C]'
                     : 'text-gray-600 hover:text-[#002A5C] hover:bg-gray-100'
                 }`}
               >
-                <div className="flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center justify-center gap-1 sm:gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                   </svg>
-                  Chat with Tempo
+                  <span className="hidden sm:inline">Chat with Tempo</span>
+                  <span className="sm:hidden">Chat</span>
                 </div>
               </button>
               <button
@@ -494,17 +495,18 @@ const ExplorePathwaysPage: React.FC = () => {
                     setIsAutoRotating(false); // Stop auto-rotation when switching tabs
                   }
                 }}
-                className={`flex-1 px-6 py-4 font-semibold text-sm transition-all ${
+                className={`flex-1 px-3 sm:px-6 py-3 sm:py-4 font-semibold text-xs sm:text-sm transition-all ${
                   activeTab === 'browse'
                     ? 'bg-white text-[#002A5C] border-b-2 border-[#002A5C]'
                     : 'text-gray-600 hover:text-[#002A5C] hover:bg-gray-100'
                 }`}
               >
-                <div className="flex items-center justify-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center justify-center gap-1 sm:gap-2">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                   </svg>
-                  Browse Pathways
+                  <span className="hidden sm:inline">Browse Pathways</span>
+                  <span className="sm:hidden">Browse</span>
                 </div>
               </button>
             </div>
@@ -514,20 +516,20 @@ const ExplorePathwaysPage: React.FC = () => {
               {activeTab === 'chat' ? (
                 <>
                   {/* Chatbot Panel */}
-                  <div className="bg-gradient-to-r from-[#002A5C] to-[#001d3f] p-6 text-white flex-shrink-0">
-                    <div className="flex items-center gap-4">
-                      <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border-2 border-white/30 ring-2 ring-white/20">
+                  <div className="bg-gradient-to-r from-[#002A5C] to-[#001d3f] p-4 sm:p-6 text-white flex-shrink-0">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-white rounded-full flex items-center justify-center shadow-lg overflow-hidden border-2 border-white/30 ring-2 ring-white/20">
                         <img src="/tempo.png" alt="Tempo" className="w-full h-full object-cover" />
                       </div>
                       <div>
-                        <h2 className="text-lg font-bold">Tempo</h2>
+                        <h2 className="text-base sm:text-lg font-bold">Tempo</h2>
                         <p className="text-xs text-white/80">Your Music Career Guide</p>
                       </div>
                     </div>
                   </div>
 
                   {/* Chat Messages */}
-                  <div className="flex-1 overflow-y-auto p-6 space-y-4 scroll-smooth min-h-0">
+                  <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3 sm:space-y-4 scroll-smooth min-h-0">
                     {chatMessages.map((msg, idx) => (
                       <div
                         key={idx}
@@ -540,13 +542,13 @@ const ExplorePathwaysPage: React.FC = () => {
                           </div>
                         )}
                         <div
-                          className={`max-w-[80%] rounded-2xl p-4 ${
+                          className={`max-w-[85%] sm:max-w-[80%] rounded-xl sm:rounded-2xl p-3 sm:p-4 ${
                             msg.type === 'user'
                               ? 'bg-[#002A5C] text-white'
                               : 'bg-gray-100 text-gray-800'
                           }`}
                         >
-                          <p className="whitespace-pre-line">{msg.content}</p>
+                          <p className="whitespace-pre-line text-sm sm:text-base">{msg.content}</p>
                           {msg.pathways && msg.pathways.length > 0 && (
                             <div className="mt-3 space-y-2">
                               {msg.pathways.map(pathwayId => {
@@ -608,8 +610,8 @@ const ExplorePathwaysPage: React.FC = () => {
                   )}
 
                   {/* Input */}
-                  <div className="p-6 border-t border-gray-200 flex-shrink-0">
-                    <div className="flex gap-3">
+                  <div className="p-4 sm:p-6 border-t border-gray-200 flex-shrink-0">
+                    <div className="flex gap-2 sm:gap-3">
                       <input
                         type="text"
                         value={inputValue}
@@ -622,12 +624,12 @@ const ExplorePathwaysPage: React.FC = () => {
                         onKeyPress={(e) => e.key === 'Enter' && !isTyping && handleSendMessage()}
                         placeholder="Tell me about your interests..."
                         disabled={isTyping}
-                        className="flex-1 px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-[#002A5C] focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex-1 px-3 sm:px-4 py-2 sm:py-3 border-2 border-gray-200 rounded-lg sm:rounded-xl focus:border-[#002A5C] focus:outline-none transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base"
                       />
                       <button
                         onClick={() => handleSendMessage()}
                         disabled={isTyping || !inputValue.trim()}
-                        className="px-6 py-3 bg-[#002A5C] text-white rounded-xl font-semibold hover:bg-[#001d3f] transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-sm hover:shadow-md"
+                        className="px-4 sm:px-6 py-2 sm:py-3 bg-[#002A5C] text-white rounded-lg sm:rounded-xl font-semibold hover:bg-[#001d3f] transition-all duration-200 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-sm hover:shadow-md text-sm sm:text-base"
                       >
                         Send
                       </button>
@@ -654,20 +656,23 @@ const ExplorePathwaysPage: React.FC = () => {
           </div>
 
           {/* Right Panel - Interactive Map */}
-          <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl border border-gray-100 overflow-hidden relative" style={{ height: '650px' }}>
+          <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-xl border border-gray-100 overflow-hidden relative h-[500px] lg:h-[650px]">
             {/* Map Title */}
             <div className="absolute top-2 left-2 right-2 z-20">
-              <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-sm border border-gray-200">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-xs font-semibold text-[#002A5C]">Interactive Pathways Map</h3>
-                    <p className="text-xs text-gray-600">Click bubbles or chat with Tempo to explore</p>
+              <div className="bg-white/90 backdrop-blur-sm rounded-lg px-2 sm:px-3 py-1 sm:py-1.5 shadow-sm border border-gray-200">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xs font-semibold text-[#002A5C] truncate">Interactive Pathways Map</h3>
+                    <p className="text-xs text-gray-600 hidden sm:block">Click bubbles or chat with Tempo to explore</p>
                   </div>
                   {isAutoRotating && !highlightedPathways.length && !activePathway && (
-                    <div className="flex items-center gap-2 px-2.5 py-1 bg-[#002A5C]/10 rounded-lg border border-[#002A5C]/20">
-                      <div className="w-2 h-2 bg-[#002A5C] rounded-full animate-pulse"></div>
-                      <span className="text-xs font-semibold text-[#002A5C]">
+                    <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-0.5 sm:py-1 bg-[#002A5C]/10 rounded-lg border border-[#002A5C]/20 flex-shrink-0">
+                      <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#002A5C] rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-[#002A5C] hidden sm:inline">
                         Auto-rotating • {timeUntilNextRotation}s
+                      </span>
+                      <span className="text-xs font-semibold text-[#002A5C] sm:hidden">
+                        {timeUntilNextRotation}s
                       </span>
                     </div>
                   )}
@@ -675,7 +680,7 @@ const ExplorePathwaysPage: React.FC = () => {
               </div>
             </div>
             
-            <div className="absolute inset-0 p-4 z-0 pt-12">
+            <div className="absolute inset-0 p-2 sm:p-4 z-0 pt-10 sm:pt-12">
               <svg viewBox="0 0 100 100" className="w-full h-full">
 
                 {/* Connecting Lines */}
@@ -770,20 +775,20 @@ const ExplorePathwaysPage: React.FC = () => {
 
                 {/* Info Card */}
             {currentPathway && (
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-6 border-t border-gray-200 z-10">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-white via-white/95 to-transparent p-3 sm:p-4 md:p-6 border-t border-gray-200 z-10">
                 <div className="max-w-md mx-auto">
-                  <div className={`bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl border border-gray-100 transition-all duration-500 ease-out ${
+                  <div className={`bg-white/95 backdrop-blur-sm rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 shadow-xl border border-gray-100 transition-all duration-500 ease-out ${
                     isTransitioning ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
                   }`}>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-2 h-8 bg-gradient-to-b from-[#002A5C] to-[#14779B] rounded-full"></div>
-                      <h3 className="text-2xl font-bold text-[#002A5C]">{currentPathway.name}</h3>
+                    <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                      <div className="w-1.5 sm:w-2 h-6 sm:h-8 bg-gradient-to-b from-[#002A5C] to-[#14779B] rounded-full"></div>
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-[#002A5C]">{currentPathway.name}</h3>
                     </div>
-                    <p className="text-gray-700 mb-4 text-sm leading-relaxed">{currentPathway.description}</p>
+                    <p className="text-gray-700 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">{currentPathway.description}</p>
                     
-                    <div className="mb-4">
-                      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Example Careers</p>
-                      <div className="space-y-2">
+                    <div className="mb-3 sm:mb-4">
+                      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5 sm:mb-2">Example Careers</p>
+                      <div className="space-y-1.5 sm:space-y-2">
                         {currentPathway.careers.slice(0, 4).map((career, idx) => {
                           const berkleeUrl = getBerkleeCareerUrl(career);
                           return (
@@ -799,12 +804,12 @@ const ExplorePathwaysPage: React.FC = () => {
                                 window.open(berkleeUrl, '_blank', 'noopener,noreferrer');
                                 e.preventDefault();
                               }}
-                              className="block px-3 py-2 bg-gray-50 hover:bg-[#002A5C]/10 rounded-lg text-xs text-gray-700 transition-all duration-150 border border-gray-200 hover:border-[#002A5C]/30 group transform hover:scale-[1.02] active:scale-95 cursor-pointer"
+                              className="block px-2.5 sm:px-3 py-1.5 sm:py-2 bg-gray-50 hover:bg-[#002A5C]/10 rounded-lg text-xs text-gray-700 transition-all duration-150 border border-gray-200 hover:border-[#002A5C]/30 group transform hover:scale-[1.02] active:scale-95 cursor-pointer"
                               style={{ animationDelay: `${idx * 50}ms` }}
                             >
                               <div className="flex items-center justify-between">
-                                <span className="font-medium group-hover:text-[#002A5C] transition-colors">{career}</span>
-                                <svg className="w-3 h-3 text-gray-400 group-hover:text-[#002A5C] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <span className="font-medium group-hover:text-[#002A5C] transition-colors truncate pr-2">{career}</span>
+                                <svg className="w-3 h-3 text-gray-400 group-hover:text-[#002A5C] transition-colors flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                 </svg>
                               </div>
@@ -814,14 +819,15 @@ const ExplorePathwaysPage: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="mb-4 p-3 bg-blue-50 rounded-lg border border-blue-100">
+                    <div className="mb-3 sm:mb-4 p-2.5 sm:p-3 bg-blue-50 rounded-lg border border-blue-100">
                       <div className="flex items-start gap-2">
-                        <svg className="w-4 h-4 text-[#002A5C] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#002A5C] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <div className="text-xs text-gray-700">
-                          <p className="font-semibold text-[#002A5C] mb-1">Explore Career Details</p>
-                          <p>Click any career above to view detailed information from Berklee College of Music about job descriptions, skills needed, career paths, and more.</p>
+                          <p className="font-semibold text-[#002A5C] mb-0.5 sm:mb-1">Explore Career Details</p>
+                          <p className="hidden sm:block">Click any career above to view detailed information from Berklee College of Music about job descriptions, skills needed, career paths, and more.</p>
+                          <p className="sm:hidden">Tap any career to learn more.</p>
                         </div>
                       </div>
                     </div>
@@ -836,13 +842,13 @@ const ExplorePathwaysPage: React.FC = () => {
                         window.open(url, '_blank', 'noopener,noreferrer');
                         e.preventDefault();
                       }}
-                      className="block w-full px-4 py-2.5 bg-gradient-to-r from-[#002A5C] to-[#001d3f] text-white rounded-lg font-semibold hover:from-[#001d3f] hover:to-[#002A5C] hover:shadow-lg transition-all duration-150 text-sm text-center mb-2 active:scale-95 cursor-pointer"
+                      className="block w-full px-3 sm:px-4 py-2 sm:py-2.5 bg-gradient-to-r from-[#002A5C] to-[#001d3f] text-white rounded-lg font-semibold hover:from-[#001d3f] hover:to-[#002A5C] hover:shadow-lg transition-all duration-150 text-xs sm:text-sm text-center mb-2 active:scale-95 cursor-pointer"
                     >
                       Explore All Careers at Berklee →
                     </a>
                     <button
                       onClick={() => navigate(`/about`)}
-                      className="w-full px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-semibold transition-all text-sm"
+                      className="w-full px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg font-semibold transition-all text-xs sm:text-sm"
                     >
                       Learn More About TMPP
                     </button>

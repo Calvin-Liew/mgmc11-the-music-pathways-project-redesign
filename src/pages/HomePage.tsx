@@ -6,76 +6,81 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full bg-[#002A5C] overflow-hidden">
-        <div className="absolute bottom-0 left-[40%] -translate-x-1/2 pointer-events-none z-0 opacity-20">
+      <section className="relative w-full bg-[#002A5C] overflow-hidden min-h-screen md:min-h-screen lg:min-h-0">
+        {/* Decorative SVGs - Hidden on mobile for cleaner look */}
+        <div className="hidden md:block absolute bottom-0 left-[40%] -translate-x-1/2 pointer-events-none z-0 opacity-20">
           <img 
             src="/trails.svg" 
             alt="" 
-            className="w-auto h-[50vh] md:h-[55vh] lg:h-[60vh] object-contain"
+            className="w-auto h-[55vh] lg:h-[60vh] object-contain"
           />
         </div>
         
-        <div className="absolute top-0 left-0 pointer-events-none z-0 opacity-20">
+        <div className="hidden md:block absolute top-0 left-0 pointer-events-none z-0 opacity-20">
           <img 
             src="/line.svg" 
             alt="" 
-            className="w-auto h-auto max-h-[300px] md:max-h-[400px] lg:max-h-[500px] object-contain"
+            className="w-auto h-auto max-h-[400px] lg:max-h-[500px] object-contain"
           />
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 lg:py-20 relative z-10">
-          <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-20 items-center">
-            <div className="relative flex flex-col justify-center space-y-5 lg:space-y-6">
-              <div>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight mb-5 text-white drop-shadow-lg">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 relative z-10 h-full flex flex-col justify-center">
+          <div className="relative z-10 grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 xl:gap-20 items-center">
+            {/* Text Content - First on mobile */}
+            <div className="relative flex flex-col justify-center space-y-5 sm:space-y-6 lg:space-y-8 order-1 text-center lg:text-left">
+              <div className="space-y-3 sm:space-y-4 lg:space-y-5">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-white drop-shadow-lg">
                   Discover where music <span className="text-[#FF3D5C]">can take you.</span>
                 </h1>
-                <p className="text-base md:text-lg lg:text-xl text-white/95 leading-relaxed drop-shadow-md">
-                  Explore real music careers across performance, business, technology, health, media, and more. TMPP helps students find pathways grounded in today's evolving industry.
+                <p className="text-base sm:text-lg md:text-xl lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Explore real music careers across performance, business, technology, health, media, and more.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start pt-1 sm:pt-2">
                 <Link
                   to="/pathways"
-                  className="px-6 py-3 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-1 text-sm md:text-base shadow-lg text-center"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-xl transition-all transform hover:-translate-y-1 text-sm sm:text-base shadow-lg text-center"
                 >
-                  Explore Your Music Pathways
+                  Explore Pathways
                 </Link>
                 <Link
                   to="/about"
-                  className="px-6 py-3 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-[#002A5C] hover:shadow-lg transition-all text-sm md:text-base text-center"
+                  className="px-6 sm:px-8 py-3 sm:py-3.5 border-2 border-white text-white rounded-xl font-semibold hover:bg-white hover:text-[#002A5C] hover:shadow-lg transition-all text-sm sm:text-base text-center"
                 >
-                  How TMPP Works
+                  Learn More
                 </Link>
               </div>
             </div>
 
-            <div className="relative flex items-center">
-              <CareerPathwaysSlider />
+            {/* Slider - Second on mobile */}
+            <div className="relative flex items-center justify-center order-2 mt-2 sm:mt-0">
+              <div className="w-full max-w-sm sm:max-w-md lg:max-w-none">
+                <CareerPathwaysSlider />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Stats Section - Visual Bar Style */}
-      <section className="py-16 md:py-20 bg-gradient-to-b from-white to-[#F8FAFC]">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-to-b from-white to-[#F8FAFC]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-[#002A5C] mb-3">30+</div>
-                <div className="text-xl text-gray-700 font-semibold mb-2">Career Pathways</div>
-                <div className="h-1 w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#002A5C] mb-2 sm:mb-3">30+</div>
+                <div className="text-lg sm:text-xl text-gray-700 font-semibold mb-2">Career Pathways</div>
+                <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
               </div>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-[#002A5C] mb-3">100%</div>
-                <div className="text-xl text-gray-700 font-semibold mb-2">Research-Informed</div>
-                <div className="h-1 w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#002A5C] mb-2 sm:mb-3">100%</div>
+                <div className="text-lg sm:text-xl text-gray-700 font-semibold mb-2">Research-Informed</div>
+                <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
               </div>
               <div className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-[#002A5C] mb-3">✓</div>
-                <div className="text-xl text-gray-700 font-semibold mb-2">Curriculum-Aligned</div>
-                <div className="h-1 w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold text-[#002A5C] mb-2 sm:mb-3">✓</div>
+                <div className="text-lg sm:text-xl text-gray-700 font-semibold mb-2">Curriculum-Aligned</div>
+                <div className="h-1 w-20 sm:w-24 bg-gradient-to-r from-[#002A5C] to-[#14779B] mx-auto rounded-full"></div>
               </div>
             </div>
           </div>
@@ -83,25 +88,25 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* About Section - Split Layout */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center mb-12 sm:mb-16">
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-6">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 sm:mb-6">
                   What Is The Music Pathways Project?
                 </h2>
-                <p className="text-xl text-gray-700 leading-relaxed mb-8">
+                <p className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6 sm:mb-8">
                   The Music Pathways Project (TMPP) based at the University of Toronto Scarborough is a research-informed initiative responding to the disconnect between student perceptions of music careers and the realities of a rapidly evolving music industry.
                 </p>
                 <Link
                   to="/about"
-                  className="inline-block px-8 py-4 bg-[#002A5C] text-white rounded-xl font-semibold hover:bg-[#001d3f] hover:shadow-xl transition-all transform hover:-translate-y-1"
+                  className="inline-block px-6 sm:px-8 py-3 sm:py-4 bg-[#002A5C] text-white rounded-xl font-semibold hover:bg-[#001d3f] hover:shadow-xl transition-all transform hover:-translate-y-1 text-sm sm:text-base"
                 >
                   Learn More About TMPP →
                 </Link>
               </div>
-              <div className="grid grid-cols-1 gap-6">
+              <div className="grid grid-cols-1 gap-4 sm:gap-6">
                 <div className="flex items-start gap-4 p-6 bg-[#F8FAFC] rounded-xl border-l-4 border-[#002A5C]">
                   <div className="w-12 h-12 bg-[#002A5C]/10 rounded-lg flex items-center justify-center flex-shrink-0">
                     <svg className="w-6 h-6 text-[#002A5C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -150,30 +155,30 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Pathways Section - Visual Emphasis */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#002A5C] to-[#001d3f] text-white relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-br from-[#002A5C] to-[#001d3f] text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 right-20 w-64 h-64 bg-white rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#14779B] rounded-full blur-3xl"></div>
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-block w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8 backdrop-blur-sm">
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="inline-block w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 backdrop-blur-sm">
+              <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
               </svg>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
               Explore Music Career Pathways
             </h2>
-            <p className="text-2xl text-white/90 mb-4 font-medium">
+            <p className="text-xl sm:text-2xl text-white/90 mb-3 sm:mb-4 font-medium">
               More than "perform, teach, or quit."
             </p>
-            <p className="text-lg text-white/80 mb-10 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg text-white/80 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto px-4">
               Discover diverse career pathways across performance, business, technology, education, health sciences, and more. Each pathway connects directly to the Ontario curriculum and real-world opportunities.
             </p>
             <Link
               to="/pathways"
-              className="inline-block px-10 py-4 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-lg shadow-xl"
+              className="inline-block px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg shadow-xl"
             >
               Explore All Pathways →
             </Link>
@@ -182,18 +187,18 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Audience Section - Side by Side Cards */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">
+            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] mb-3 sm:mb-4">
                 For Students, Educators, Families
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-lg sm:text-xl text-gray-600">
                 Resources tailored to your needs
               </p>
             </div>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
               <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#F8FAFC] to-white p-10 border-2 border-gray-100 hover:border-[#002A5C]/30 transition-all hover:shadow-2xl">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#14779B]/5 rounded-full -mr-16 -mt-16"></div>
                 <div className="relative">
@@ -247,14 +252,14 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* How It Works - Horizontal Flow */}
-      <section className="py-20 md:py-28 bg-gradient-to-b from-white to-[#F8FAFC]">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-b from-white to-[#F8FAFC]">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4">
+            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] mb-3 sm:mb-4">
                 How It Works
               </h2>
-              <p className="text-xl text-gray-600">
+              <p className="text-lg sm:text-xl text-gray-600">
                 Three simple steps to discover your music career pathway
               </p>
             </div>
@@ -262,7 +267,7 @@ const HomePage: React.FC = () => {
               {/* Connecting Line */}
               <div className="hidden md:block absolute top-16 left-0 right-0 h-0.5 bg-gradient-to-r from-[#002A5C] via-[#14779B] to-[#002A5C]"></div>
               
-              <div className="grid md:grid-cols-3 gap-8 relative">
+              <div className="grid md:grid-cols-3 gap-6 sm:gap-8 relative">
                 <div className="relative">
                   <div className="w-20 h-20 bg-gradient-to-br from-[#002A5C] to-[#001d3f] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl relative z-10">
                     <span className="text-3xl font-bold text-white">1</span>
@@ -299,10 +304,10 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Research Section - Split with Visual */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               <div>
                 <div className="inline-block w-16 h-16 bg-[#002A5C]/10 rounded-2xl flex items-center justify-center mb-6">
                   <svg className="w-8 h-8 text-[#002A5C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -342,41 +347,41 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Testimonial - Full Width Accent */}
-      <section className="py-20 md:py-28 bg-gradient-to-r from-[#FF3D5C]/10 via-[#14779B]/10 to-[#002A5C]/10">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-r from-[#FF3D5C]/10 via-[#14779B]/10 to-[#002A5C]/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
-              <svg className="w-16 h-16 text-[#FF3D5C] mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24">
+              <svg className="w-12 h-12 sm:w-16 sm:h-16 text-[#FF3D5C] mx-auto mb-6 sm:mb-8" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h3.983v10h-9.983z"/>
               </svg>
-              <blockquote className="text-2xl md:text-3xl font-medium text-gray-800 leading-relaxed mb-6">
+              <blockquote className="text-xl sm:text-2xl md:text-3xl font-medium text-gray-800 leading-relaxed mb-4 sm:mb-6 px-4">
                 "I always thought music meant becoming a performer or teacher. TMPP showed me there are so many other ways to build a career in music that I never considered."
               </blockquote>
-              <p className="text-lg text-gray-600 font-semibold">— Student Participant</p>
+              <p className="text-base sm:text-lg text-gray-600 font-semibold">— Student Participant</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 md:py-28 bg-gradient-to-br from-[#002A5C] to-[#001d3f] text-white">
+      <section className="py-12 sm:py-16 md:py-20 lg:py-28 bg-gradient-to-br from-[#002A5C] to-[#001d3f] text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
             Ready to Explore?
           </h2>
-          <p className="text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-white/90 mb-8 sm:mb-10 max-w-2xl mx-auto">
             Start discovering music career pathways today.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               to="/pathways"
-              className="px-10 py-4 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-lg shadow-xl"
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-white text-[#002A5C] rounded-xl font-semibold hover:bg-gray-100 hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg shadow-xl"
             >
               Start Exploring Pathways
             </Link>
             <Link
               to="/contact"
-              className="px-10 py-4 bg-[#14779B] text-white rounded-xl font-semibold hover:bg-[#0f5f7a] hover:shadow-2xl transition-all transform hover:-translate-y-1 text-lg shadow-xl"
+              className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 bg-[#14779B] text-white rounded-xl font-semibold hover:bg-[#0f5f7a] hover:shadow-2xl transition-all transform hover:-translate-y-1 text-base sm:text-lg shadow-xl"
             >
               Contact the TMPP Team
             </Link>

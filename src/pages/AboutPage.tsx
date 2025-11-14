@@ -36,44 +36,44 @@ const AboutPage: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#002A5C] mb-8 text-center">
               Team Leads
             </h2>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
               {/* Lynn Tucker */}
               <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
                   <img 
                     src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face" 
                     alt="Lynn Tucker" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-[#002A5C] mb-1">Lynn Tucker</h3>
-                <p className="text-sm text-gray-600">Team Lead</p>
+                <h3 className="text-lg sm:text-xl font-bold text-[#002A5C] mb-1">Lynn Tucker</h3>
+                <p className="text-xs sm:text-sm text-gray-600">Team Lead</p>
               </div>
 
               {/* Laura Jane Menard */}
               <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
                   <img 
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=face" 
                     alt="Laura Jane Menard" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-[#002A5C] mb-1">Laura Jane Menard</h3>
-                <p className="text-sm text-gray-600">Team Lead</p>
+                <h3 className="text-lg sm:text-xl font-bold text-[#002A5C] mb-1">Laura Jane Menard</h3>
+                <p className="text-xs sm:text-sm text-gray-600">Team Lead</p>
               </div>
 
               {/* Kyle Zavitz */}
               <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 rounded-full overflow-hidden border-4 border-[#002A5C]/10 shadow-lg">
                   <img 
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" 
                     alt="Kyle Zavitz" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-[#002A5C] mb-1">Kyle Zavitz</h3>
-                <p className="text-sm text-gray-600">Team Lead</p>
+                <h3 className="text-lg sm:text-xl font-bold text-[#002A5C] mb-1">Kyle Zavitz</h3>
+                <p className="text-xs sm:text-sm text-gray-600">Team Lead</p>
               </div>
             </div>
             </div>
@@ -83,56 +83,56 @@ const AboutPage: React.FC = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-[#002A5C] mb-8 text-center">
               Current Team
             </h2>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 sm:gap-6">
               {/* Team Member 1 */}
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=face" 
                     alt="Team Member" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
+                <h3 className="text-sm sm:text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
                 <p className="text-xs text-gray-600">Role</p>
               </div>
 
               {/* Team Member 2 */}
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=300&fit=crop&crop=face" 
                     alt="Team Member" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
+                <h3 className="text-sm sm:text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
                 <p className="text-xs text-gray-600">Role</p>
               </div>
 
               {/* Team Member 3 */}
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=300&fit=crop&crop=face" 
                     alt="Team Member" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
+                <h3 className="text-sm sm:text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
                 <p className="text-xs text-gray-600">Role</p>
               </div>
 
               {/* Team Member 4 */}
               <div className="text-center">
-                <div className="w-24 h-24 mx-auto mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
+                <div className="w-20 h-20 sm:w-24 sm:h-24 mx-auto mb-2 sm:mb-3 rounded-full overflow-hidden border-2 border-[#14779B]/20 shadow-md">
                   <img 
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=face" 
                     alt="Team Member" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
+                <h3 className="text-sm sm:text-base font-semibold text-[#002A5C] mb-1">Team Member</h3>
                 <p className="text-xs text-gray-600">Role</p>
               </div>
             </div>
