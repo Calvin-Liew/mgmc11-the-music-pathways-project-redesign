@@ -24,7 +24,11 @@ const ExplorePathwaysPage: React.FC = () => {
   const [isAutoRotating, setIsAutoRotating] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [activeTab, setActiveTab] = useState<'chat' | 'browse'>('chat');
+  const [timeUntilNextRotation, setTimeUntilNextRotation] = useState(8);
   const chatEndRef = useRef<HTMLDivElement>(null);
+  const previousPathwayRef = useRef<string | null>(null);
+  const autoRotateIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Calculate radial positions for pathways
   const calculateRadialPosition = (index: number, total: number, radius: number) => {
@@ -200,20 +204,73 @@ const ExplorePathwaysPage: React.FC = () => {
     }
   }, [chatMessages.length]);
 
+  // Initialize previous pathway ref
+  useEffect(() => {
+    if (previousPathwayRef.current === null && pathwaysWithPositions.length > 0) {
+      previousPathwayRef.current = pathwaysWithPositions[currentMapIndex]?.id || null;
+    }
+  }, [currentMapIndex, pathwaysWithPositions]);
+
+  // Countdown timer for auto-rotation
+  useEffect(() => {
+    if (!isAutoRotating || highlightedPathways.length > 0 || isTransitioning || activePathway) {
+      if (countdownIntervalRef.current) {
+        clearInterval(countdownIntervalRef.current);
+        countdownIntervalRef.current = null;
+      }
+      setTimeUntilNextRotation(8);
+      return;
+    }
+
+    // Reset countdown when map index changes (rotation happened)
+    setTimeUntilNextRotation(8);
+    
+    countdownIntervalRef.current = setInterval(() => {
+      setTimeUntilNextRotation((prev) => {
+        if (prev <= 1) {
+          return 8; // Reset to 8 when it reaches 0 (rotation will happen)
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => {
+      if (countdownIntervalRef.current) {
+        clearInterval(countdownIntervalRef.current);
+        countdownIntervalRef.current = null;
+      }
+    };
+  }, [isAutoRotating, highlightedPathways.length, isTransitioning, activePathway, currentMapIndex]);
+
   // Auto-rotate map when idle
   useEffect(() => {
-    if (!isAutoRotating || highlightedPathways.length > 0 || isTransitioning) return;
+    if (!isAutoRotating || highlightedPathways.length > 0 || isTransitioning || activePathway) {
+      if (autoRotateIntervalRef.current) {
+        clearInterval(autoRotateIntervalRef.current);
+        autoRotateIntervalRef.current = null;
+      }
+      return;
+    }
     
-    const interval = setInterval(() => {
+    autoRotateIntervalRef.current = setInterval(() => {
       setIsTransitioning(true);
+      setTimeUntilNextRotation(8); // Reset countdown
       setTimeout(() => {
-        setCurrentMapIndex((prev) => (prev + 1) % pathwaysWithPositions.length);
+        const nextIndex = (currentMapIndex + 1) % pathwaysWithPositions.length;
+        const nextPathwayId = pathwaysWithPositions[nextIndex]?.id;
+        setCurrentMapIndex(nextIndex);
+        previousPathwayRef.current = nextPathwayId || null;
         setIsTransitioning(false);
       }, 300);
     }, 8000);
 
-    return () => clearInterval(interval);
-  }, [isAutoRotating, highlightedPathways.length, pathwaysWithPositions.length, isTransitioning]);
+    return () => {
+      if (autoRotateIntervalRef.current) {
+        clearInterval(autoRotateIntervalRef.current);
+        autoRotateIntervalRef.current = null;
+      }
+    };
+  }, [isAutoRotating, highlightedPathways.length, pathwaysWithPositions.length, isTransitioning, activePathway, currentMapIndex]);
 
   const matchPathways = (input: string): string[] => {
     const lowerInput = input.toLowerCase();
@@ -314,21 +371,28 @@ const ExplorePathwaysPage: React.FC = () => {
     
     // Highlight pathways on map
     if (matchedPathways.length > 0) {
-      setIsTransitioning(true);
+      const newPathwayId = matchedPathways[0];
+      const isDifferentPathway = previousPathwayRef.current !== newPathwayId;
+      
+      // Only transition if switching to a different pathway
+      if (isDifferentPathway) {
+        setIsTransitioning(true);
+      }
+      
       setTimeout(() => {
         setHighlightedPathways(matchedPathways);
-        setActivePathway(matchedPathways[0]);
-        setIsTransitioning(false);
+        setActivePathway(newPathwayId);
+        // Lock the map index to the first matched pathway
+        const matchedIndex = pathwaysWithPositions.findIndex(p => p.id === newPathwayId);
+        if (matchedIndex !== -1) {
+          setCurrentMapIndex(matchedIndex);
+        }
+        previousPathwayRef.current = newPathwayId;
+        if (isDifferentPathway) {
+          setIsTransitioning(false);
+        }
         
-        // Auto-clear highlights after 10 seconds
-        setTimeout(() => {
-          setIsTransitioning(true);
-          setTimeout(() => {
-            setHighlightedPathways([]);
-            setIsAutoRotating(true);
-            setIsTransitioning(false);
-          }, 300);
-        }, 10000);
+        // Don't auto-clear highlights or resume auto-rotation after user interaction
       }, 200);
     }
 
@@ -345,12 +409,26 @@ const ExplorePathwaysPage: React.FC = () => {
   };
 
   const handlePathwayClick = (pathwayId: string) => {
-    setIsTransitioning(true);
     setIsAutoRotating(false);
+    
+    // Only transition if switching to a different pathway
+    const isDifferentPathway = previousPathwayRef.current !== pathwayId;
+    if (isDifferentPathway) {
+      setIsTransitioning(true);
+    }
+    
     setTimeout(() => {
       setActivePathway(pathwayId);
       setHighlightedPathways([pathwayId]);
-      setIsTransitioning(false);
+      // Lock the map index to the clicked pathway
+      const clickedIndex = pathwaysWithPositions.findIndex(p => p.id === pathwayId);
+      if (clickedIndex !== -1) {
+        setCurrentMapIndex(clickedIndex);
+      }
+      previousPathwayRef.current = pathwayId;
+      if (isDifferentPathway) {
+        setIsTransitioning(false);
+      }
     }, 150);
   };
 
@@ -390,7 +468,12 @@ const ExplorePathwaysPage: React.FC = () => {
             {/* Tab Navigation */}
             <div className="flex border-b border-gray-200 bg-gray-50">
               <button
-                onClick={() => setActiveTab('chat')}
+                onClick={() => {
+                  setActiveTab('chat');
+                  if (isAutoRotating) {
+                    setIsAutoRotating(false); // Stop auto-rotation when switching tabs
+                  }
+                }}
                 className={`flex-1 px-6 py-4 font-semibold text-sm transition-all ${
                   activeTab === 'chat'
                     ? 'bg-white text-[#002A5C] border-b-2 border-[#002A5C]'
@@ -405,7 +488,12 @@ const ExplorePathwaysPage: React.FC = () => {
                 </div>
               </button>
               <button
-                onClick={() => setActiveTab('browse')}
+                onClick={() => {
+                  setActiveTab('browse');
+                  if (isAutoRotating) {
+                    setIsAutoRotating(false); // Stop auto-rotation when switching tabs
+                  }
+                }}
                 className={`flex-1 px-6 py-4 font-semibold text-sm transition-all ${
                   activeTab === 'browse'
                     ? 'bg-white text-[#002A5C] border-b-2 border-[#002A5C]'
@@ -503,7 +591,12 @@ const ExplorePathwaysPage: React.FC = () => {
                         {quickStartChips.map((chip, idx) => (
                           <button
                             key={idx}
-                            onClick={() => handleSendMessage(chip)}
+                            onClick={() => {
+                              if (isAutoRotating) {
+                                setIsAutoRotating(false); // Stop auto-rotation when clicking quick start chips
+                              }
+                              handleSendMessage(chip);
+                            }}
                             className="px-3 py-1.5 text-xs bg-gray-100 hover:bg-[#002A5C] hover:text-white rounded-full transition-all duration-200 transform hover:scale-105 shadow-sm hover:shadow-md"
                             style={{ animationDelay: `${idx * 100}ms` }}
                           >
@@ -520,7 +613,12 @@ const ExplorePathwaysPage: React.FC = () => {
                       <input
                         type="text"
                         value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        onChange={(e) => {
+                          setInputValue(e.target.value);
+                          if (isAutoRotating) {
+                            setIsAutoRotating(false); // Stop auto-rotation when user types
+                          }
+                        }}
                         onKeyPress={(e) => e.key === 'Enter' && !isTyping && handleSendMessage()}
                         placeholder="Tell me about your interests..."
                         disabled={isTyping}
@@ -560,8 +658,20 @@ const ExplorePathwaysPage: React.FC = () => {
             {/* Map Title */}
             <div className="absolute top-2 left-2 right-2 z-20">
               <div className="bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 shadow-sm border border-gray-200">
-                <h3 className="text-xs font-semibold text-[#002A5C]">Interactive Pathways Map</h3>
-                <p className="text-xs text-gray-600">Click bubbles or chat with Tempo to explore</p>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xs font-semibold text-[#002A5C]">Interactive Pathways Map</h3>
+                    <p className="text-xs text-gray-600">Click bubbles or chat with Tempo to explore</p>
+                  </div>
+                  {isAutoRotating && !highlightedPathways.length && !activePathway && (
+                    <div className="flex items-center gap-2 px-2.5 py-1 bg-[#002A5C]/10 rounded-lg border border-[#002A5C]/20">
+                      <div className="w-2 h-2 bg-[#002A5C] rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-[#002A5C]">
+                        Auto-rotating • {timeUntilNextRotation}s
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
             
