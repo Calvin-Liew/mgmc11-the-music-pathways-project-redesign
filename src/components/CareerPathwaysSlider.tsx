@@ -14,7 +14,7 @@ const CareerPathwaysSlider: React.FC<CareerPathwaysSliderProps> = ({ onPathwayCl
   const [userInteracted, setUserInteracted] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const AUTO_ROTATE_INTERVAL = 10000; // 10 seconds
+  const AUTO_ROTATE_INTERVAL = 8000; // 8 seconds
 
   const pathways = [
     {
