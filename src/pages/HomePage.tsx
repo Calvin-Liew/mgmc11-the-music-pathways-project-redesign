@@ -6,7 +6,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full bg-[#002A5C] overflow-hidden min-h-screen">
+      <section className="relative w-full bg-[#002A5C] overflow-hidden h-screen flex flex-col">
         {/* Decorative SVGs - Hidden on mobile for cleaner look */}
         <div className="hidden md:block absolute bottom-0 left-[40%] -translate-x-1/2 pointer-events-none z-0 opacity-20">
           <img 
@@ -24,7 +24,7 @@ const HomePage: React.FC = () => {
           />
         </div>
         
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 relative z-10 h-full flex flex-col justify-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 relative z-10 flex-1 flex flex-col justify-center">
           <div className="relative z-10 grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16 xl:gap-20 items-center">
             {/* Text Content - First on mobile */}
             <div className="relative flex flex-col justify-center space-y-5 sm:space-y-6 lg:space-y-8 order-1 text-center lg:text-left">
