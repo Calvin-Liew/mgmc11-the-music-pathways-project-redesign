@@ -6,7 +6,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full bg-[#002A5C] overflow-hidden min-h-screen md:min-h-screen lg:min-h-0">
+      <section className="relative w-full bg-[#002A5C] overflow-hidden min-h-screen">
         {/* Decorative SVGs - Hidden on mobile for cleaner look */}
         <div className="hidden md:block absolute bottom-0 left-[40%] -translate-x-1/2 pointer-events-none z-0 opacity-20">
           <img 
