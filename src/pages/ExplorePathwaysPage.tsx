@@ -27,8 +27,8 @@ const ExplorePathwaysPage: React.FC = () => {
   const [timeUntilNextRotation, setTimeUntilNextRotation] = useState(8);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const previousPathwayRef = useRef<string | null>(null);
-  const autoRotateIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const countdownIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const autoRotateIntervalRef = useRef<number | null>(null);
+  const countdownIntervalRef = useRef<number | null>(null);
 
   // Calculate radial positions for pathways
   const calculateRadialPosition = (index: number, total: number, radius: number) => {
