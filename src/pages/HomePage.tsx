@@ -6,7 +6,7 @@ const HomePage: React.FC = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative w-full bg-[#002A5C] overflow-hidden h-screen flex flex-col">
+      <section className="relative w-full bg-[#002A5C] overflow-hidden min-h-[calc(100vh-4rem)] md:min-h-[calc(100vh-5rem)] flex flex-col">
         {/* Decorative SVGs - Hidden on mobile for cleaner look */}
         <div className="hidden md:block absolute bottom-0 left-[40%] -translate-x-1/2 pointer-events-none z-0 opacity-20">
           <img 
@@ -54,7 +54,7 @@ const HomePage: React.FC = () => {
 
             {/* Slider - Second on mobile */}
             <div className="relative flex items-center justify-center order-2 mt-2 sm:mt-0">
-              <div className="w-full max-w-sm sm:max-w-md lg:max-w-none">
+              <div className="w-full max-w-sm sm:max-w-md lg:max-w-lg">
                 <CareerPathwaysSlider />
               </div>
             </div>
